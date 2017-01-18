@@ -1,0 +1,13 @@
+[apple]
+  xctool_path = /usr/local/bin/xctool
+  xctool_default_destination_specifier = name=iPhone 7,platform=iOS Simulator
+  use_header_maps_in_xcode = false
+
+[cxx]
+  cflags = -g -std=c11
+  cxxflags = -g -std=c++14
+  combined_preprocess_and_compile = true
+  default_platform = iphonesimulator-x86_64
+
+[project]
+  ide_prompt = false

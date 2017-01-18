@@ -1,0 +1,39 @@
+foundation = '$SDKROOT/System/Library/Frameworks/Foundation.framework'
+xctest = '$PLATFORM_DIR/Developer/Library/Frameworks/XCTest.framework'
+
+apple_library(
+  name = 'Greeter',
+
+  # headers
+  exported_headers = glob(['Greeter/*.h']),
+
+  # sources
+  srcs = glob(['Greeter/*.m']),
+
+  # dependencies
+  deps = [
+    '//Lib1:Lib',
+    '//Lib2:Lib',
+  ],
+  frameworks = [foundation],
+
+  # config
+  preprocessor_flags = ['-fobjc-arc'],
+  tests = [':GreeterTests'],
+)
+
+apple_test(
+  name = 'GreeterTests',
+
+  # sources
+  srcs = glob(['GreeterTests/*.m']),
+
+  # dependencies
+  deps = [':Greeter'],
+  frameworks = [foundation, xctest],
+
+  # config
+  linker_flags = ['-ObjC'],
+  preprocessor_flags = ['-fobjc-arc'],
+  info_plist = 'GreeterTests/Info.plist',
+)

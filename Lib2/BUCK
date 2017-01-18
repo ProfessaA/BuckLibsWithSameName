@@ -1,0 +1,23 @@
+foundation = '$SDKROOT/System/Library/Frameworks/Foundation.framework'
+xctest = '$PLATFORM_DIR/Developer/Library/Frameworks/XCTest.framework'
+
+apple_library(
+  name = 'Lib',
+  visibility = ['PUBLIC'],
+
+  # headers
+  header_path_prefix = "Lib2/Lib",
+  exported_headers = glob(['Lib/*.h']),
+
+  # sources
+  srcs = glob(['Lib/*.m']),
+
+  # dependencies
+  deps = [],
+  frameworks = [foundation],
+
+  # config
+  preprocessor_flags = ['-fobjc-arc'],
+  tests = [],
+)
+
